@@ -8,11 +8,13 @@ class MyTextButton extends StatelessWidget {
   Color btnBackgroundColor;
   String btnText;
   VoidCallback onPress;
+  double borderRadius;
   MyTextButton({
     super.key,
     this.btnBackgroundColor = AppColors.primary,
     required this.btnText,
     required this.onPress,
+    this.borderRadius = 27,
   });
 
   @override
@@ -23,7 +25,7 @@ class MyTextButton extends StatelessWidget {
         backgroundColor: btnBackgroundColor,
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(27),
+          borderRadius: BorderRadius.circular(borderRadius),
           side: BorderSide(width: 1, color: Colors.black12),
         ),
       ),

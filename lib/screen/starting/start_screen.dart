@@ -1,4 +1,5 @@
 import 'package:astrotalk_app/helper/custom_text_style.dart';
+import 'package:astrotalk_app/screen/starting/enter_details_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../helper/color.dart';
@@ -55,7 +56,15 @@ class _StartScreenState extends State<StartScreen> {
             /// stayr button
             SizedBox(
               width: mqData.width * 0.9,
-              child: MyTextButton(btnText: 'Start Free Chat', onPress: () {}),
+              child: MyTextButton(
+                btnText: 'Start Free Chat',
+                onPress: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => EnterDetailsScreen()),
+                  );
+                },
+              ),
             ),
 
             SizedBox(height: 12),
