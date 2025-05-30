@@ -1,4 +1,5 @@
 import 'package:astrotalk_app/screen/starting/splash_screen.dart';
+import 'package:astrotalk_app/screen/starting/start_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: SplashScreen(),
+      home: StartScreen(),
     );
   }
 }

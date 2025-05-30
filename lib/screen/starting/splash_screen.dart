@@ -1,3 +1,4 @@
+import 'package:astrotalk_app/helper/custom_text_style.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -10,6 +11,33 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    /// medial query
+    final mqData = MediaQuery.of(context).size;
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(1000),
+              child: Image.asset(
+                "lib/assets/icons/app_logo.png",
+                height: mqData.height * 0.2,
+                width: mqData.height * 0.2,
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(height: 12),
+
+            Text(
+              "Astrotalk",
+              style: myTextStyle36(fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
