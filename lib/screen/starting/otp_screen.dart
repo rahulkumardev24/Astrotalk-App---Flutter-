@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../helper/color.dart';
+import '../dashboard/dashboard_screen.dart';
 
 class OtpScreen extends StatefulWidget {
   String phoneNumber;
@@ -80,6 +81,10 @@ class _OtpScreenState extends State<OtpScreen> {
                   borderRadius: 12,
                   onPress: () {
                     /// dashboard screen
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (_) => DashboardScreen()),
+                    );
                   },
                 ),
               ),

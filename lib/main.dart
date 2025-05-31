@@ -1,3 +1,4 @@
+import 'package:astrotalk_app/screen/dashboard/dashboard_screen.dart';
 import 'package:astrotalk_app/screen/starting/enter_details_screen.dart';
 import 'package:astrotalk_app/screen/starting/login_screen.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: LoginScreen(),
+      home: DashboardScreen(),
     );
   }
 }
