@@ -1,5 +1,6 @@
 import 'package:astrotalk_app/helper/color.dart';
 import 'package:astrotalk_app/helper/custom_text_style.dart';
+import 'package:astrotalk_app/screen/starting/otp_screen.dart';
 import 'package:astrotalk_app/widgets/my_text_button.dart';
 import 'package:flutter/material.dart';
 
@@ -99,6 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Expanded(
                                   child: TextField(
                                     controller: phoneNumberController,
+                                    keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                       border: InputBorder.none,
                                       hintText: 'phone number',
@@ -121,7 +123,32 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: MyTextButton(
                               btnText: "GET OTP",
                               borderRadius: 16,
-                              onPress: () {},
+                              onPress: () {
+                                if (phoneNumberController.text.isEmpty) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        "please enter your phone number",
+                                        style: myTextStyle18(
+                                          textColor: Colors.white,
+                                        ),
+                                      ),
+                                      backgroundColor: Colors.red,
+                                    ),
+                                  );
+                                } else {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (_) => OtpScreen(
+                                            phoneNumber:
+                                                phoneNumberController.text,
+                                          ),
+                                    ),
+                                  );
+                                }
+                              },
                               btnTextColor: Colors.white,
                               btnBackgroundColor: Colors.black,
                             ),
