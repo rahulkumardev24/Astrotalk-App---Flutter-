@@ -9,12 +9,14 @@ class MyTextButton extends StatelessWidget {
   String btnText;
   VoidCallback onPress;
   double borderRadius;
+  Color btnTextColor ;
   MyTextButton({
     super.key,
     this.btnBackgroundColor = AppColors.primary,
     required this.btnText,
     required this.onPress,
     this.borderRadius = 27,
+    this.btnTextColor = Colors.black
   });
 
   @override
@@ -31,7 +33,7 @@ class MyTextButton extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
-        child: Text(btnText, style: myTextStyle21(fontWeight: FontWeight.bold)),
+        child: Text(btnText, style: myTextStyle21(fontWeight: FontWeight.bold , textColor: btnTextColor)),
       ),
     );
   }
