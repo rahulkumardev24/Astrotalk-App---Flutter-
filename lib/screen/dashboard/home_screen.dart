@@ -3,6 +3,7 @@ import 'package:astrotalk_app/widgets/my_text_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../helper/color.dart';
+import '../../widgets/my_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,6 +14,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late Size mqData = MediaQuery.of(context).size;
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   /// yello card data
   List<Map<String, dynamic>> yelloBoxCard = [
@@ -134,10 +137,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
         backgroundColor: Colors.white,
+        drawer: MyDrawer(),
 
         /// app bar
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           flexibleSpace: _buildAppBar(),
           backgroundColor: Colors.white,
         ),
@@ -146,384 +152,347 @@ class _HomeScreenState extends State<HomeScreen> {
         body: SafeArea(
           child: Stack(
             children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      /// search box
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(width: 1, color: Colors.black26),
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    /// search box
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(width: 1, color: Colors.black26),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12.0,
+                            vertical: 8,
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12.0,
-                              vertical: 8,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Search",
-                                  style: myTextStyle12(
-                                    textColor: Colors.black38,
-                                  ),
-                                ),
-                                Icon(Icons.search, color: Colors.black38),
-                              ],
-                            ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Search",
+                                style: myTextStyle12(textColor: Colors.black38),
+                              ),
+                              Icon(Icons.search, color: Colors.black38),
+                            ],
                           ),
                         ),
                       ),
-                      SizedBox(height: mqData.height * 0.02),
+                    ),
+                    SizedBox(height: mqData.height * 0.02),
 
-                      /// yellow box call here
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                        child: SizedBox(
-                          height: mqData.height * 0.15,
-                          child: ListView.builder(
-                            itemCount: yelloBoxCard.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return _yellowBox(
-                                imagePath: yelloBoxCard[index]["image"],
-                                title: yelloBoxCard[index]["title"],
-                                subtitle: yelloBoxCard[index]["subTitle"],
-                              );
-                            },
+                    /// yellow box call here
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      child: SizedBox(
+                        height: mqData.height * 0.15,
+                        child: ListView.builder(
+                          itemCount: yelloBoxCard.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return _yellowBox(
+                              imagePath: yelloBoxCard[index]["image"],
+                              title: yelloBoxCard[index]["title"],
+                              subtitle: yelloBoxCard[index]["subTitle"],
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+
+                    Divider(thickness: 8, color: Colors.black12.withAlpha(10)),
+
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0,
+                        vertical: 6,
+                      ),
+                      child: SizedBox(
+                        height: mqData.height * 0.13,
+                        width: mqData.width,
+                        child: Card(color: Colors.white),
+                      ),
+                    ),
+
+                    Divider(thickness: 8, color: Colors.black12.withAlpha(10)),
+
+                    /// live Astrologers
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0,
+                        vertical: 4,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Live Astrologers",
+                            style: myTextStyle18(fontWeight: FontWeight.bold),
                           ),
+                          Text(
+                            "View All",
+                            style: myTextStyle18(textColor: Colors.black45),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    SizedBox(height: 12),
+
+                    /// Live Astrologers box call here
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      child: SizedBox(
+                        height: mqData.height * 0.18,
+                        child: ListView.builder(
+                          itemCount: astroData.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return liveAstrologerCard(
+                              image: astroData[index]["image"],
+                              name: astroData[index]["name"],
+                            );
+                          },
                         ),
                       ),
+                    ),
 
-                      Divider(
-                        thickness: 8,
-                        color: Colors.black12.withAlpha(10),
+                    SizedBox(height: 8),
+                    Divider(thickness: 8, color: Colors.black12.withAlpha(10)),
+
+                    /// black card
+                    questionBox(),
+                    Divider(thickness: 8, color: Colors.black12.withAlpha(10)),
+
+                    /// live Astrologers
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0,
+                        vertical: 4,
                       ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Astrologers",
+                            style: myTextStyle18(fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "View All",
+                            style: myTextStyle18(textColor: Colors.black45),
+                          ),
+                        ],
+                      ),
+                    ),
 
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12.0,
-                          vertical: 6,
-                        ),
-                        child: SizedBox(
-                          height: mqData.height * 0.13,
-                          width: mqData.width,
-                          child: Card(color: Colors.white),
+                    /// Astrologers
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      child: SizedBox(
+                        height: mqData.height * 0.27,
+                        child: ListView.builder(
+                          itemCount: astrologers.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return _astrologersCard(
+                              imagePath: astrologers[index]["image"],
+                              name: astrologers[index]["name"],
+                              call: astrologers[index]["call"],
+                            );
+                          },
                         ),
                       ),
+                    ),
 
-                      Divider(
-                        thickness: 8,
-                        color: Colors.black12.withAlpha(10),
+                    SizedBox(height: 12),
+                    Divider(thickness: 8, color: Colors.black12.withAlpha(10)),
+
+                    /// AstroRemedy
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0,
+                        vertical: 4,
                       ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "AstroRemedy",
+                            style: myTextStyle18(fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "View All",
+                            style: myTextStyle18(textColor: Colors.black45),
+                          ),
+                        ],
+                      ),
+                    ),
 
-                      /// live Astrologers
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12.0,
-                          vertical: 4,
+                    /// astroRemedyCard  here
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      child: SizedBox(
+                        height: mqData.height * 0.2,
+                        child: ListView.builder(
+                          itemCount: astroRemedy.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return astroRemedyCard(
+                              image: astroRemedy[index]["image"],
+                              name: astroRemedy[index]["title"],
+                            );
+                          },
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      ),
+                    ),
+                    SizedBox(height: 12),
+
+                    Divider(thickness: 8, color: Colors.black12.withAlpha(10)),
+
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0,
+                        vertical: 4,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Latest from blog",
+                            style: myTextStyle18(fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "View All",
+                            style: myTextStyle18(textColor: Colors.black45),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    /// Latest blog
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      child: SizedBox(
+                        height: mqData.height * 0.28,
+                        child: ListView.builder(
+                          itemCount: latestBlog.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return latestBlogCard(
+                              title: latestBlog[index]["title"],
+                              view: latestBlog[index]["blogView"],
+                              date: latestBlog[index]["Date"],
+                              name: latestBlog[index]["name"],
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 12),
+
+                    Divider(thickness: 8, color: Colors.black12.withAlpha(10)),
+                    SizedBox(height: mqData.height * 0.02),
+
+                    /// bottom
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.black12,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Icon(
+                                  Icons.lock,
+                                  size: mqData.height * 0.07,
+                                ),
+                              ),
+                            ),
+
+                            SizedBox(height: 21),
                             Text(
-                              "Live Astrologers",
+                              "Private & ",
                               style: myTextStyle18(fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              "View All",
-                              style: myTextStyle18(textColor: Colors.black45),
+                              "Confidential",
+                              style: myTextStyle18(fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
-                      ),
-
-                      SizedBox(height: 12),
-
-                      /// Live Astrologers box call here
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                        child: SizedBox(
-                          height: mqData.height * 0.18,
-                          child: ListView.builder(
-                            itemCount: astroData.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return liveAstrologerCard(
-                                image: astroData[index]["image"],
-                                name: astroData[index]["name"],
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-
-                      SizedBox(height: 8),
-                      Divider(
-                        thickness: 8,
-                        color: Colors.black12.withAlpha(10),
-                      ),
-
-                      /// black card
-                      questionBox(),
-                      Divider(
-                        thickness: 8,
-                        color: Colors.black12.withAlpha(10),
-                      ),
-
-                      /// live Astrologers
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12.0,
-                          vertical: 4,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.black12,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Icon(
+                                  Icons.verified_user,
+                                  size: mqData.height * 0.07,
+                                ),
+                              ),
+                            ),
+
+                            SizedBox(height: 21),
+                            Text(
+                              "Verified",
+                              style: myTextStyle18(fontWeight: FontWeight.bold),
+                            ),
                             Text(
                               "Astrologers",
                               style: myTextStyle18(fontWeight: FontWeight.bold),
                             ),
-                            Text(
-                              "View All",
-                              style: myTextStyle18(textColor: Colors.black45),
-                            ),
                           ],
                         ),
-                      ),
-
-                      /// Astrologers
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                        child: SizedBox(
-                          height: mqData.height * 0.27,
-                          child: ListView.builder(
-                            itemCount: astrologers.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return _astrologersCard(
-                                imagePath: astrologers[index]["image"],
-                                name: astrologers[index]["name"],
-                                call: astrologers[index]["call"],
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-
-                      SizedBox(height: 12),
-                      Divider(
-                        thickness: 8,
-                        color: Colors.black12.withAlpha(10),
-                      ),
-
-                      /// AstroRemedy
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12.0,
-                          vertical: 4,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.black12,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Icon(
+                                  Icons.security_rounded,
+                                  size: mqData.height * 0.07,
+                                ),
+                              ),
+                            ),
+
+                            SizedBox(height: 21),
                             Text(
-                              "AstroRemedy",
+                              "Secure",
                               style: myTextStyle18(fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              "View All",
-                              style: myTextStyle18(textColor: Colors.black45),
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      /// astroRemedyCard  here
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                        child: SizedBox(
-                          height: mqData.height * 0.2,
-                          child: ListView.builder(
-                            itemCount: astroRemedy.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return astroRemedyCard(
-                                image: astroRemedy[index]["image"],
-                                name: astroRemedy[index]["title"],
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 12),
-
-                      Divider(
-                        thickness: 8,
-                        color: Colors.black12.withAlpha(10),
-                      ),
-
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12.0,
-                          vertical: 4,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Latest from blog",
+                              "Payments",
                               style: myTextStyle18(fontWeight: FontWeight.bold),
                             ),
-                            Text(
-                              "View All",
-                              style: myTextStyle18(textColor: Colors.black45),
-                            ),
                           ],
                         ),
-                      ),
+                      ],
+                    ),
 
-                      /// Latest blog
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                        child: SizedBox(
-                          height: mqData.height * 0.28,
-                          child: ListView.builder(
-                            itemCount: latestBlog.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return latestBlogCard(
-                                title: latestBlog[index]["title"],
-                                view: latestBlog[index]["blogView"],
-                                date: latestBlog[index]["Date"],
-                                name: latestBlog[index]["name"],
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 12),
-
-                      Divider(
-                        thickness: 8,
-                        color: Colors.black12.withAlpha(10),
-                      ),
-                      SizedBox(height: mqData.height * 0.02),
-
-                      /// bottom
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.black12,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(12.0),
-                                  child: Icon(
-                                    Icons.lock,
-                                    size: mqData.height * 0.07,
-                                  ),
-                                ),
-                              ),
-
-                              SizedBox(height: 21),
-                              Text(
-                                "Private & ",
-                                style: myTextStyle18(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                "Confidential",
-                                style: myTextStyle18(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.black12,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(12.0),
-                                  child: Icon(
-                                    Icons.verified_user,
-                                    size: mqData.height * 0.07,
-                                  ),
-                                ),
-                              ),
-
-                              SizedBox(height: 21),
-                              Text(
-                                "Verified",
-                                style: myTextStyle18(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                "Astrologers",
-                                style: myTextStyle18(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.black12,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(12.0),
-                                  child: Icon(
-                                    Icons.security_rounded,
-                                    size: mqData.height * 0.07,
-                                  ),
-                                ),
-                              ),
-
-                              SizedBox(height: 21),
-                              Text(
-                                "Secure",
-                                style: myTextStyle18(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                "Payments",
-                                style: myTextStyle18(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-
-                      /// bottom space
-                      SizedBox(height: mqData.height * 0.1),
-                    ],
-                  ),
+                    /// bottom space
+                    SizedBox(height: mqData.height * 0.1),
+                  ],
                 ),
               ),
 
@@ -593,29 +562,32 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Row(
         children: [
           /// profile image
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Image.asset(
-                  "lib/assets/images/profile.png",
-                  fit: BoxFit.cover,
-                  height: mqData.height * 0.05,
-                  width: mqData.height * 0.05,
-                ),
-              ),
-              Positioned(
-                bottom: 0,
-                right: 0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
+          GestureDetector(
+            onTap: () => _scaffoldKey.currentState?.openDrawer(),
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Image.asset(
+                    "lib/assets/images/profile.png",
+                    fit: BoxFit.cover,
+                    height: mqData.height * 0.05,
+                    width: mqData.height * 0.05,
                   ),
-                  child: Icon(Icons.menu_rounded, size: 16),
                 ),
-              ),
-            ],
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(Icons.menu_rounded, size: 16),
+                  ),
+                ),
+              ],
+            ),
           ),
           SizedBox(width: 12),
           Text("Hi Rahul", style: myTextStyle21()),
