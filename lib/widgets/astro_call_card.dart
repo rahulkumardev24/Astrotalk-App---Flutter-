@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 import '../helper/color.dart';
 
-class AstroChatCard extends StatefulWidget {
+class AstroCallCard extends StatefulWidget {
   String image;
   String name;
   String language;
   String oldPrice;
   String newPrice;
   String orders;
-  AstroChatCard({
+  AstroCallCard({
     super.key,
     required this.image,
     required this.name,
@@ -21,10 +21,10 @@ class AstroChatCard extends StatefulWidget {
   });
 
   @override
-  State<AstroChatCard> createState() => _AstroChatCardState();
+  State<AstroCallCard> createState() => _AstroChatCardState();
 }
 
-class _AstroChatCardState extends State<AstroChatCard> {
+class _AstroChatCardState extends State<AstroCallCard> {
   late Size mqData = MediaQuery.of(context).size;
   @override
   Widget build(BuildContext context) {
@@ -171,7 +171,7 @@ class _AstroChatCardState extends State<AstroChatCard> {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Text(
-                            "Chat",
+                            "Call",
                             style: myTextStyle18(
                               fontWeight: FontWeight.bold,
                               textColor: Colors.green,
