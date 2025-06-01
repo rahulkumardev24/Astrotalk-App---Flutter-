@@ -50,6 +50,86 @@ class _HomeScreenState extends State<HomeScreen> {
     {"image": "lib/assets/images/ast7.jpg", "name": "Aman"},
   ];
 
+  /// astrologers card data
+  List<Map<String, dynamic>> astrologers = [
+    {
+      "image": "lib/assets/images/men1.png",
+      "name": "Rishank",
+      "call": "72/min",
+    },
+    {
+      "image": "lib/assets/images/men2.png",
+      "name": "Vaidikk",
+      "call": "57/min",
+    },
+    {"image": "lib/assets/images/men3.png", "name": "Rohit", "call": "40/min"},
+    {
+      "image": "lib/assets/images/men1.png",
+      "name": "Himanshu",
+      "call": "35/min",
+    },
+    {
+      "image": "lib/assets/images/men2.png",
+      "name": "Vaidikk",
+      "call": "47/min",
+    },
+    {"image": "lib/assets/images/men3.png", "name": "Shyam", "call": "25/min"},
+    {"image": "lib/assets/images/men1.png", "name": "Vikas", "call": "19/min"},
+  ];
+
+  /// AstroRemedy
+  List<Map<String, dynamic>> astroRemedy = [
+    {
+      "image": "lib/assets/images/bracelets.jpeg",
+      "title": "Bracelets & Pendants",
+    },
+    {"image": "lib/assets/images/epooja.jpg", "title": "E-Pooja"},
+    {"image": "lib/assets/images/vip-e-pooja.jpg", "title": "VIP E-Pooja"},
+    {"image": "lib/assets/images/shanidev.jpg", "title": "Shanivaar special"},
+    {"image": "lib/assets/images/spell.jpg", "title": "Spell"},
+    {"image": "lib/assets/images/rahu-ketu.jpg", "title": "Rahu-Ketu"},
+    {"image": "lib/assets/images/reiki.jpg", "title": "Reiki Healing"},
+  ];
+
+  List<Map<String, dynamic>> latestBlog = [
+    {
+      "blogView": "960",
+      "title": "5050 Angel Number",
+      "name": "Nabangi",
+      "Date": "May 28, 2025",
+    },
+    {
+      "blogView": "980",
+      "title": "3030 Angel Number",
+      "name": "Karan Mehta",
+      "Date": "May 26, 2025",
+    },
+    {
+      "blogView": "1570",
+      "title": "4848 Angel Number",
+      "name": "Nabangi",
+      "Date": "May 25, 2025",
+    },
+    {
+      "blogView": "845",
+      "title": "4848 Angel Number",
+      "name": "Ravi Tiwari",
+      "Date": "May 24, 2025",
+    },
+    {
+      "blogView": "1095",
+      "title": "3737 Angel Number",
+      "name": "Sanya Gupta",
+      "Date": "May 22, 2025",
+    },
+    {
+      "blogView": "1330",
+      "title": "3636 Angel Number",
+      "name": "Ananya Das",
+      "Date": "May 20, 2025",
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -221,24 +301,227 @@ class _HomeScreenState extends State<HomeScreen> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12.0),
                         child: SizedBox(
-                          height: mqData.height * 0.2,
+                          height: mqData.height * 0.27,
                           child: ListView.builder(
-                            itemCount: yelloBoxCard.length,
+                            itemCount: astrologers.length,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
                               return _astrologersCard(
-                                imagePath: yelloBoxCard[index]["image"],
-                                title: yelloBoxCard[index]["title"],
-                                subtitle: yelloBoxCard[index]["subTitle"],
+                                imagePath: astrologers[index]["image"],
+                                name: astrologers[index]["name"],
+                                call: astrologers[index]["call"],
                               );
                             },
                           ),
                         ),
                       ),
 
+                      SizedBox(height: 12),
+                      Divider(
+                        thickness: 8,
+                        color: Colors.black12.withAlpha(10),
+                      ),
+
+                      /// AstroRemedy
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12.0,
+                          vertical: 4,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "AstroRemedy",
+                              style: myTextStyle18(fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              "View All",
+                              style: myTextStyle18(textColor: Colors.black45),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      /// astroRemedyCard  here
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                        child: SizedBox(
+                          height: mqData.height * 0.2,
+                          child: ListView.builder(
+                            itemCount: astroRemedy.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return astroRemedyCard(
+                                image: astroRemedy[index]["image"],
+                                name: astroRemedy[index]["title"],
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 12),
+
+                      Divider(
+                        thickness: 8,
+                        color: Colors.black12.withAlpha(10),
+                      ),
+
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12.0,
+                          vertical: 4,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Latest from blog",
+                              style: myTextStyle18(fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              "View All",
+                              style: myTextStyle18(textColor: Colors.black45),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      /// Latest blog
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                        child: SizedBox(
+                          height: mqData.height * 0.28,
+                          child: ListView.builder(
+                            itemCount: latestBlog.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return latestBlogCard(
+                                title: latestBlog[index]["title"],
+                                view: latestBlog[index]["blogView"],
+                                date: latestBlog[index]["Date"],
+                                name: latestBlog[index]["name"],
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 12),
+
+                      Divider(
+                        thickness: 8,
+                        color: Colors.black12.withAlpha(10),
+                      ),
+                      SizedBox(height: mqData.height * 0.02),
+
+                      /// bottom
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.black12,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: Icon(
+                                    Icons.lock,
+                                    size: mqData.height * 0.07,
+                                  ),
+                                ),
+                              ),
+
+                              SizedBox(height: 21),
+                              Text(
+                                "Private & ",
+                                style: myTextStyle18(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "Confidential",
+                                style: myTextStyle18(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.black12,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: Icon(
+                                    Icons.verified_user,
+                                    size: mqData.height * 0.07,
+                                  ),
+                                ),
+                              ),
+
+                              SizedBox(height: 21),
+                              Text(
+                                "Verified",
+                                style: myTextStyle18(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "Astrologers",
+                                style: myTextStyle18(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.black12,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: Icon(
+                                    Icons.security_rounded,
+                                    size: mqData.height * 0.07,
+                                  ),
+                                ),
+                              ),
+
+                              SizedBox(height: 21),
+                              Text(
+                                "Secure",
+                                style: myTextStyle18(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "Payments",
+                                style: myTextStyle18(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
 
                       /// bottom space
-                      SizedBox(height: mqData.height * 0.1,)
+                      SizedBox(height: mqData.height * 0.1),
                     ],
                   ),
                 ),
@@ -523,6 +806,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.green,
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(12),
+                  topLeft: Radius.circular(12),
                 ),
               ),
               child: Padding(
@@ -539,55 +823,276 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-
   /// Astrologer card
   Widget _astrologersCard({
     required String imagePath,
-    required String title,
-    required String subtitle,
+    required String name,
+    required String call,
   }) {
-    return Container(
-      width: mqData.width * 0.3,
-      margin: EdgeInsets.only(right: 12),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12) ,
-        border: Border.all(width: 2 , color: Colors.black38) ,
+    return Stack(
+      children: [
+        Container(
+          width: mqData.width * 0.35,
+          margin: EdgeInsets.only(right: 12),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(width: 2, color: Colors.black38),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 26),
 
-      ),
-      child: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: mqData.width * 0.03),
-            height: mqData.height * 0.08,
-            width: mqData.height * 0.08,
+              /// profile
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: mqData.width * 0.03),
+                height: mqData.height * 0.12,
+                width: mqData.height * 0.12,
+                decoration: BoxDecoration(
+                  color: AppColors.lightBackground,
+                  shape: BoxShape.circle,
+                  border: Border.all(width: 2, color: AppColors.primary),
+                  image: DecorationImage(
+                    image: AssetImage(imagePath),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              SizedBox(height: 4),
+
+              /// name
+              Text(
+                name,
+                style: myTextStyle18(
+                  textColor: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.currency_rupee_rounded,
+                    size: 16,
+                    color: Colors.black38,
+                  ),
+                  Text(call, style: myTextStyle18(textColor: Colors.black45)),
+                ],
+              ),
+
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(21),
+                  border: Border.all(width: 2, color: Colors.green),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: mqData.height * 0.04,
+                    vertical: 2,
+                  ),
+                  child: Text(
+                    "Chat",
+                    style: myTextStyle18(textColor: Colors.green),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Positioned(
+          child: Container(
             decoration: BoxDecoration(
-              color: AppColors.primary,
-              shape: BoxShape.circle,
-              border: Border.all(width: 2 , color: AppColors.primary)
-              
+              color: Colors.black87.withAlpha(170),
+              borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(12),
+                topLeft: Radius.circular(12),
+              ),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset(imagePath),
+              padding: const EdgeInsets.all(4.0),
+              child: Text(
+                "*Celebrity*",
+                style: myTextStyle12(textColor: Colors.yellow),
+              ),
             ),
           ),
-          Text(title, style: myTextStyle18(textColor: Colors.black45)),
-          Text(subtitle, style: myTextStyle18(textColor: Colors.black45)),
-          
-         Container(
-             decoration: BoxDecoration(
-               color: Colors.white ,
-               borderRadius: BorderRadius.circular(21) ,
-               border: Border.all(width: 2 , color: Colors.green)
-             ),
-             child: Padding(
-               padding: const EdgeInsets.symmetric(horizontal: 12.0 , vertical: 4),
-               child: Text("Chat" , style: myTextStyle18(textColor: Colors.green),),
-             ))
+        ),
+      ],
+    );
+  }
+
+  Widget astroRemedyCard({required String image, required String name}) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 8.0),
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Image.asset(
+              image,
+              width: mqData.width * 0.5,
+              height: mqData.height * 0.9,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: Text(
+              name,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                fontFamily: "primary",
+                color: Colors.white,
+                shadows: [
+                  Shadow(
+                    blurRadius: 5,
+                    color: Colors.black.withOpacity(0.7),
+                    offset: Offset(1, 1),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 
+  /// latest blog
+  Widget latestBlogCard({
+    required String title,
+    required String view,
+    required String date,
+    required String name,
+  }) {
+    return SizedBox(
+      width: mqData.width * 0.6,
+      child: Card(
+        color: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            /// image
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  width: mqData.width,
+                  height: mqData.height * 0.15,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(12),
+                      topRight: Radius.circular(12),
+                    ),
+                    image: DecorationImage(
+                      image: AssetImage("lib/assets/images/queen.png"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
 
+                Positioned(
+                  right: 10,
+                  top: 10,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white70,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0,
+                        vertical: 1,
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(Icons.visibility),
+                          Text(
+                            view,
+                            style: myTextStyle15(textColor: Colors.black),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(200),
+                          child: Image.asset(
+                            "lib/assets/icons/app_logo.png",
+                            height: mqData.height * 0.02,
+                            width: mqData.height * 0.02,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Text(
+                          "Astrotalk",
+                          style: myTextStyle12(textColor: Colors.white),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      title,
+                      style: myTextStyle21(
+                        fontWeight: FontWeight.bold,
+                        textColor: Colors.white,
+                      ),
+                    ),
+
+                    Text(
+                      "Angels have a message for you!",
+                      style: myTextStyle12(textColor: Colors.white),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: myTextStyle18(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    "Meaning:Love,Career&Twin",
+                    style: myTextStyle15(fontWeight: FontWeight.bold),
+                  ),
+
+                  SizedBox(height: 12),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Nabangi",
+                        style: myTextStyle15(textColor: Colors.black38),
+                      ),
+                      Text(
+                        date,
+                        style: myTextStyle15(textColor: Colors.black38),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
