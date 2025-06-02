@@ -102,6 +102,43 @@ class _RemediesScreenState extends State<RemediesScreen> {
     {"image": "lib/assets/images/reiki.jpg", "title": "Reiki Healing"},
   ];
 
+  /// yello card data
+  List<Map<String, dynamic>> topSellData = [
+    {
+      "image": "lib/assets/images/couple.jpg",
+      "title": "Attract your",
+      "subTitle": "Love Spell",
+    },
+    {
+      "image": "lib/assets/images/b1.png",
+      "title": "Rose Quartz",
+      "subTitle": "Bracelet with",
+    },
+    {
+      "image": "lib/assets/images/stone.jpg",
+      "title": "Gemstone",
+      "subTitle": "Consultation",
+    },
+
+    {
+      "image": "lib/assets/images/b2.png",
+      "title": "Money Magnet",
+      "subTitle": "Bracelet",
+    },
+
+    {
+      "image": "lib/assets/images/b3.png",
+      "title": "Dhan Yog",
+      "subTitle": "Bracelet",
+    },
+
+    {
+      "image": "lib/assets/images/b4.jpg",
+      "title": "Raw Pyrite",
+      "subTitle": "Bracelet",
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -238,34 +275,120 @@ class _RemediesScreenState extends State<RemediesScreen> {
 
                 /// bottom part
                 /// Top selling
-                Container(
-                  height: mqData.height * 0.2,
-                  decoration: BoxDecoration(color: AppColors.lightBackground),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16.0,
-                          vertical: 6,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: mqData.height * 0.22,
+                    decoration: BoxDecoration(color: AppColors.lightBackground),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16.0,
+                            vertical: 6,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                          children: [
-                            Text(
-                              "Top Selling",
-                              style: myTextStyle18(fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              "View All",
-                              style: myTextStyle15(textColor: Colors.black45),
-                            ),
-                          ],
+                            children: [
+                              Text(
+                                "Top Selling",
+                                style: myTextStyle18(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "View All",
+                                style: myTextStyle15(textColor: Colors.black45),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                        SizedBox(height: 12),
+
+                        /// top selling
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                          child: SizedBox(
+                            height: mqData.height * 0.15,
+                            child: ListView.builder(
+                              itemCount: topSellData.length,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index) {
+                                return topSellCard(
+                                  imagePath: topSellData[index]["image"],
+                                  title: topSellData[index]["title"],
+                                  subtitle: topSellData[index]["subTitle"],
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
+
+                SizedBox(height: 8),
+
+                /// Newly Launched
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: mqData.height * 0.22,
+                    decoration: BoxDecoration(color: AppColors.lightBackground),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16.0,
+                            vertical: 6,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                            children: [
+                              Text(
+                                "Newly Launched",
+                                style: myTextStyle18(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "View All",
+                                style: myTextStyle15(textColor: Colors.black45),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 12),
+
+                        /// Newly Launched
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                          child: SizedBox(
+                            height: mqData.height * 0.15,
+                            child: ListView.builder(
+                              itemCount: topSellData.length,
+                              scrollDirection: Axis.horizontal,
+                              reverse: true,
+                              itemBuilder: (context, index) {
+                                return topSellCard(
+                                  imagePath: topSellData[index]["image"],
+                                  title: topSellData[index]["title"],
+                                  subtitle: topSellData[index]["subTitle"],
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(height: 21),
               ],
             ),
           ),
@@ -411,8 +534,30 @@ class _RemediesScreenState extends State<RemediesScreen> {
     );
   }
 
-  /// top sell card
-  Widget topSellCard() {
-    return Column(children: [Image.asset("")]);
+  /// yello box
+  Widget topSellCard({
+    required String imagePath,
+    required String title,
+    required String subtitle,
+  }) {
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: mqData.width * 0.03),
+          height: mqData.height * 0.08,
+          width: mqData.height * 0.08,
+          decoration: BoxDecoration(
+            color: AppColors.primary,
+            shape: BoxShape.circle,
+            image: DecorationImage(
+              image: AssetImage(imagePath),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Text(title, style: myTextStyle15()),
+        Text(subtitle, style: myTextStyle15()),
+      ],
+    );
   }
 }
