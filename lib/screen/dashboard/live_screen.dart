@@ -16,10 +16,10 @@ class _AstroTalkLiveScreenState extends State<LiveScreen> {
 
   // List of astrologer live videos (replace with actual URLs)
   final List<String> _liveVideos = [
-    "lib/assets/video/SYSTEM.mp4",
-    "lib/assets/video/reels.mp4",
-    "lib/assets/video/Main-mera-dil-aur-tum-ho-yahan-Visit.mp4",
-    "lib/assets/video/video.mp4",
+    "lib/assets/video/video1.mp4",
+    "lib/assets/video/video2.mp4",
+    "lib/assets/video/video4.mp4",
+    "lib/assets/video/video7.mp4",
   ];
 
   // Astrologer data

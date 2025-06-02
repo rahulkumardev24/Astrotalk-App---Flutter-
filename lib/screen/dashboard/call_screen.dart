@@ -1,3 +1,5 @@
+import 'package:astrotalk_app/screen/common/add_money_screen.dart';
+import 'package:astrotalk_app/screen/common/search_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../helper/color.dart';
@@ -279,7 +281,7 @@ class _CallScreenState extends State<CallScreen> {
   /// app bar build
   Widget _buildAppBar() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0 , vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -331,22 +333,32 @@ class _CallScreenState extends State<CallScreen> {
             ),
             child: Column(
               children: [
-                Container(
-                  decoration: BoxDecoration(
+                GestureDetector(
+                  onTap:
+                      () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => AddMoneyScreen()),
+                      ),
+                  child: Container(
+                    decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(27),
                       border: Border.all(width: 1, color: Colors.black38),
-                      color: Colors.white
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.account_balance_wallet_outlined, size: 15),
-                        Icon(Icons.currency_rupee_rounded, size: 15),
-                        Text("0", style: myTextStyle15()),
-                        Icon(Icons.add_circle_rounded, size: 15),
-                      ],
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0,
+                        vertical: 2,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.account_balance_wallet_outlined, size: 15),
+                          Icon(Icons.currency_rupee_rounded, size: 15),
+                          Text("0", style: myTextStyle15()),
+                          Icon(Icons.add_circle_rounded, size: 15),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -355,9 +367,9 @@ class _CallScreenState extends State<CallScreen> {
                   child: Text(
                     "100% Cashback",
                     style: TextStyle(
-                        fontFamily: "primary" ,
-                        color: Colors.white ,
-                        fontSize: 9
+                      fontFamily: "primary",
+                      color: Colors.white,
+                      fontSize: 9,
                     ),
                   ),
                 ),
@@ -368,7 +380,15 @@ class _CallScreenState extends State<CallScreen> {
           SizedBox(width: 12),
 
           /// search
-          Icon(Icons.search, size: 27),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => SearchScreen()),
+              );
+            },
+            child: Icon(Icons.search, size: 27),
+          ),
 
           SizedBox(width: 12),
           Icon(Icons.messenger_outline, size: 27),

@@ -1,3 +1,5 @@
+import 'package:astrotalk_app/screen/common/cart_screen.dart';
+import 'package:astrotalk_app/screen/common/search_screen.dart';
 import 'package:astrotalk_app/widgets/my_drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -460,11 +462,25 @@ class _RemediesScreenState extends State<RemediesScreen> {
           SizedBox(width: 12),
 
           /// language
-          Icon(Icons.shopping_cart_outlined),
-
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => CartScreen()),
+              );
+            },
+            child: Icon(Icons.shopping_cart_outlined),
+          ),
           SizedBox(width: 12),
-
-          Icon(Icons.search),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => SearchScreen()),
+              );
+            },
+            child: Icon(Icons.search),
+          ),
         ],
       ),
     );
@@ -559,8 +575,8 @@ class _RemediesScreenState extends State<RemediesScreen> {
             ),
           ),
         ),
-        Text(title, style: myTextStyle15()),
-        Text(subtitle, style: myTextStyle15()),
+        Text(title, style: myTextStyle12()),
+        Text(subtitle, style: myTextStyle12()),
       ],
     );
   }

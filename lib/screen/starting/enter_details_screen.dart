@@ -129,58 +129,68 @@ class _EnterDetailsScreenState extends State<EnterDetailsScreen> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _nameController.dispose();
+    _locationController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      /// app bar
-      appBar: AppBar(
-        title: Text("Enter Your Details", style: myTextStyle21()),
-        leading: IconButton(
-          onPressed: () => _backPage(),
-          icon: Icon(Icons.arrow_back_ios_rounded),
+    return GestureDetector(
+      onTap: () => Focus.of(context).unfocus(),
+      child: Scaffold(
+        /// app bar
+        appBar: AppBar(
+          title: Text("Enter Your Details", style: myTextStyle21()),
+          leading: IconButton(
+            onPressed: () => _backPage(),
+            icon: Icon(Icons.arrow_back_ios_rounded),
+          ),
+          backgroundColor: AppColors.lightBackground,
+          elevation: 0,
         ),
         backgroundColor: AppColors.lightBackground,
-        elevation: 0,
-      ),
-      backgroundColor: AppColors.lightBackground,
 
-      /// body
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Column(
-            children: [
-              /// page indicator call here
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [_buildPageIndicator()],
-              ),
-
-              Expanded(
-                child: PageView(
-                  controller: _pageController,
-                  physics: NeverScrollableScrollPhysics(),
-                  children: [
-                    /// name page
-                    _buildNamePage(),
-
-                    /// gender
-                    _buildGenderPage(),
-
-                    /// date of birth
-                    _buildDateOfBirth(),
-
-                    /// birth time
-                    _buildBirthTime(),
-
-                    /// location
-                    _buildLocationPage(),
-
-                    /// language
-                    _buildLanguagePage(),
-                  ],
+        /// body
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              children: [
+                /// page indicator call here
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [_buildPageIndicator()],
                 ),
-              ),
-            ],
+
+                Expanded(
+                  child: PageView(
+                    controller: _pageController,
+                    physics: NeverScrollableScrollPhysics(),
+                    children: [
+                      /// name page
+                      _buildNamePage(),
+
+                      /// gender
+                      _buildGenderPage(),
+
+                      /// date of birth
+                      _buildDateOfBirth(),
+
+                      /// birth time
+                      _buildBirthTime(),
+
+                      /// location
+                      _buildLocationPage(),
+
+                      /// language
+                      _buildLanguagePage(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -238,7 +248,7 @@ class _EnterDetailsScreenState extends State<EnterDetailsScreen> {
         SizedBox(height: 4),
         Text(
           "What is your name?",
-          style: myTextStyle24(
+          style: myTextStyle21(
             fontWeight: FontWeight.bold,
             textColor: Colors.black54,
           ),
@@ -312,7 +322,7 @@ class _EnterDetailsScreenState extends State<EnterDetailsScreen> {
         SizedBox(height: 32),
         Text(
           "What is your gender?",
-          style: myTextStyle24(
+          style: myTextStyle21(
             fontWeight: FontWeight.bold,
             textColor: Colors.black54,
           ),
@@ -430,7 +440,7 @@ class _EnterDetailsScreenState extends State<EnterDetailsScreen> {
         SizedBox(height: 32),
         Text(
           "Enter your birth date ",
-          style: myTextStyle24(
+          style: myTextStyle21(
             fontWeight: FontWeight.bold,
             textColor: Colors.black54,
           ),
@@ -520,8 +530,8 @@ class _EnterDetailsScreenState extends State<EnterDetailsScreen> {
       children: [
         SizedBox(height: 32),
         Text(
-          "Do you know your time of birth ",
-          style: myTextStyle24(
+          "Do you know your time of birth?",
+          style: myTextStyle21(
             fontWeight: FontWeight.bold,
             textColor: Colors.black54,
           ),
@@ -600,7 +610,7 @@ class _EnterDetailsScreenState extends State<EnterDetailsScreen> {
         SizedBox(height: 32),
         Text(
           "Where were you born?",
-          style: myTextStyle24(
+          style: myTextStyle21(
             fontWeight: FontWeight.bold,
             textColor: Colors.black54,
           ),
@@ -655,74 +665,76 @@ class _EnterDetailsScreenState extends State<EnterDetailsScreen> {
   }
 
   Widget _buildLanguagePage() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(height: 32),
-        Text(
-          "Do you know your time of birth ",
-          style: myTextStyle24(
-            fontWeight: FontWeight.bold,
-            textColor: Colors.black54,
-          ),
-        ),
-        SizedBox(height: mqData.height * 0.02),
-
-        /// language chip
-        Wrap(
-          spacing: 10,
-          runSpacing: 8,
-          children:
-              language.map((lang) {
-                final isSelected = _selectedLanguage.contains(lang);
-                return FilterChip(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(21),
-                    side: BorderSide(width: 2, color: AppColors.primary),
-                  ),
-                  selectedColor: AppColors.primary,
-                  elevation: 1,
-                  showCheckmark: false,
-                  label: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(lang, style: myTextStyle15()),
-                      Icon(isSelected ? Icons.check : Icons.add),
-                    ],
-                  ),
-                  selected: isSelected,
-                  onSelected: (selected) {
-                    setState(() {
-                      if (selected) {
-                        setState(() {
-                          _selectedLanguage.add(lang);
-                        });
-                      } else {
-                        _selectedLanguage.remove(lang);
-                      }
-                    });
-                  },
-                );
-              }).toList(),
-        ),
-
-        SizedBox(height: mqData.height * 0.05),
-
-        if (_selectedLanguage.isNotEmpty)
-          SizedBox(
-            width: double.infinity,
-            child: MyTextButton(
-              btnText: 'Start chat with Astrologer',
-              borderRadius: 16,
-              onPress: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (_) => LoginScreen()),
-                );
-              },
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 32),
+          Text(
+            "Do you know your time of birth?",
+            style: myTextStyle21(
+              fontWeight: FontWeight.bold,
+              textColor: Colors.black54,
             ),
           ),
-      ],
+          SizedBox(height: mqData.height * 0.02),
+
+          /// language chip
+          Wrap(
+            spacing: 10,
+            runSpacing: 8,
+            children:
+                language.map((lang) {
+                  final isSelected = _selectedLanguage.contains(lang);
+                  return FilterChip(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(21),
+                      side: BorderSide(width: 2, color: AppColors.primary),
+                    ),
+                    selectedColor: AppColors.primary,
+                    elevation: 1,
+                    showCheckmark: false,
+                    label: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(lang, style: myTextStyle15()),
+                        Icon(isSelected ? Icons.check : Icons.add),
+                      ],
+                    ),
+                    selected: isSelected,
+                    onSelected: (selected) {
+                      setState(() {
+                        if (selected) {
+                          setState(() {
+                            _selectedLanguage.add(lang);
+                          });
+                        } else {
+                          _selectedLanguage.remove(lang);
+                        }
+                      });
+                    },
+                  );
+                }).toList(),
+          ),
+
+          SizedBox(height: mqData.height * 0.05),
+
+          if (_selectedLanguage.isNotEmpty)
+            SizedBox(
+              width: double.infinity,
+              child: MyTextButton(
+                btnText: 'Start chat with Astrologer',
+                borderRadius: 16,
+                onPress: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => LoginScreen()),
+                  );
+                },
+              ),
+            ),
+        ],
+      ),
     );
   }
 }

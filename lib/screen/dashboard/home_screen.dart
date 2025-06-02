@@ -1,9 +1,13 @@
 import 'package:astrotalk_app/helper/custom_text_style.dart';
+import 'package:astrotalk_app/screen/common/search_screen.dart';
 import 'package:astrotalk_app/widgets/my_text_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../helper/color.dart';
+import '../../widgets/language_selection_dialog.dart';
 import '../../widgets/my_drawer.dart';
+import '../common/add_money_screen.dart';
+import '../common/help_and_support_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -158,26 +162,36 @@ class _HomeScreenState extends State<HomeScreen> {
                     /// search box
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(width: 1, color: Colors.black26),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12.0,
-                            vertical: 8,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => SearchScreen()),
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(width: 1, color: Colors.black26),
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Search",
-                                style: myTextStyle12(textColor: Colors.black38),
-                              ),
-                              Icon(Icons.search, color: Colors.black38),
-                            ],
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12.0,
+                              vertical: 8,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Search",
+                                  style: myTextStyle12(
+                                    textColor: Colors.black38,
+                                  ),
+                                ),
+                                Icon(Icons.search, color: Colors.black38),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -561,7 +575,7 @@ class _HomeScreenState extends State<HomeScreen> {
   /// app bar build
   Widget _buildAppBar() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0 , vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -599,20 +613,32 @@ class _HomeScreenState extends State<HomeScreen> {
 
           Expanded(child: SizedBox(width: mqData.width)),
 
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(27),
-              border: Border.all(width: 1, color: Colors.black38),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2),
-              child: Row(
-                children: [
-                  Icon(Icons.account_balance_wallet_outlined, size: 15),
-                  Icon(Icons.currency_rupee_rounded, size: 15),
-                  Text("0", style: myTextStyle15()),
-                  Icon(Icons.add_circle_rounded, size: 15),
-                ],
+          GestureDetector(
+            onTap: () {
+              /// Navigate to add money screen
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => AddMoneyScreen()),
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(27),
+                border: Border.all(width: 1, color: Colors.black38),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8.0,
+                  vertical: 2,
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.account_balance_wallet_outlined, size: 15),
+                    Icon(Icons.currency_rupee_rounded, size: 15),
+                    Text("0", style: myTextStyle15()),
+                    Icon(Icons.add_circle_rounded, size: 15),
+                  ],
+                ),
               ),
             ),
           ),
@@ -620,21 +646,39 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(width: 12),
 
           /// language
-          Icon(Icons.g_translate_rounded, size: mqData.height * 0.03),
+          GestureDetector(
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) => const LanguageSelectionDialog(),
+              );
+            },
+
+            child: Icon(Icons.g_translate_rounded, size: mqData.height * 0.03),
+          ),
 
           SizedBox(width: 12),
 
-          Container(
-            height: mqData.height * 0.04,
-            width: mqData.height * 0.04,
-            decoration: BoxDecoration(
-              color: AppColors.lightBackground,
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                image: AssetImage(
-                  "lib/assets/images/customer-service-agent.png",
+          /// help and support
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => HelpAndSupportScreen()),
+              );
+            },
+            child: Container(
+              height: mqData.height * 0.04,
+              width: mqData.height * 0.04,
+              decoration: BoxDecoration(
+                color: AppColors.lightBackground,
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage(
+                    "lib/assets/images/customer-service-agent.png",
+                  ),
+                  fit: BoxFit.cover,
                 ),
-                fit: BoxFit.cover,
               ),
             ),
           ),
