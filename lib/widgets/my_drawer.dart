@@ -29,8 +29,8 @@ class _MyDrawerState extends State<MyDrawer> {
                       borderRadius: BorderRadius.circular(200),
                       child: Image.asset(
                         "lib/assets/images/profile.png",
-                        height: mqData.height * 0.1,
-                        width: mqData.height * 0.1,
+                        height: mqData.height * 0.08,
+                        width: mqData.height * 0.08,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -68,7 +68,7 @@ class _MyDrawerState extends State<MyDrawer> {
 
             /// list view
             SizedBox(
-              height: mqData.height * 0.6,
+              height: mqData.height * 0.65,
               child: ListView(
                 padding: EdgeInsets.zero,
                 physics: NeverScrollableScrollPhysics(),
@@ -76,19 +76,13 @@ class _MyDrawerState extends State<MyDrawer> {
                   /// list part
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
-                    title: Text(
-                      "Home",
-                      style: TextStyle(fontFamily: "primary"),
-                    ),
+                    title: Text("Home", style: myTextStyle15()),
                     leading: Icon(Icons.home_filled),
                   ),
 
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
-                    title: Text(
-                      "Book a Pooja",
-                      style: TextStyle(fontFamily: "primary"),
-                    ),
+                    title: Text("Book a Pooja", style: myTextStyle15()),
                     leading: Icon(Icons.grass_outlined),
                   ),
 
@@ -96,53 +90,38 @@ class _MyDrawerState extends State<MyDrawer> {
                     visualDensity: VisualDensity(vertical: -4),
                     title: Text(
                       "Customer Support chat",
-                      style: TextStyle(fontFamily: "primary"),
+                      style: myTextStyle15(),
                     ),
                     leading: Icon(Icons.support_agent_rounded),
                   ),
 
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
-                    title: Text(
-                      "Wallet Transactions",
-                      style: TextStyle(fontFamily: "primary"),
-                    ),
+                    title: Text("Wallet Transactions", style: myTextStyle15()),
                     leading: Icon(Icons.account_balance_wallet_outlined),
                   ),
 
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
-                    title: Text(
-                      "Redeem Gift Card",
-                      style: TextStyle(fontFamily: "primary"),
-                    ),
+                    title: Text("Redeem Gift Card", style: myTextStyle15()),
                     leading: Icon(Icons.card_giftcard_rounded),
                   ),
 
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
-                    title: Text(
-                      "Order History",
-                      style: TextStyle(fontFamily: "primary"),
-                    ),
+                    title: Text("Order History", style: myTextStyle15()),
                     leading: Icon(Icons.history),
                   ),
 
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
-                    title: Text(
-                      "AstroRemedy",
-                      style: TextStyle(fontFamily: "primary"),
-                    ),
+                    title: Text("AstroRemedy", style: myTextStyle15()),
                     leading: Icon(Icons.store_rounded),
                   ),
 
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
-                    title: Text(
-                      "Astrology Blog",
-                      style: TextStyle(fontFamily: "primary"),
-                    ),
+                    title: Text("Astrology Blog", style: myTextStyle15()),
                     leading: Icon(Icons.book),
                   ),
 
@@ -150,43 +129,31 @@ class _MyDrawerState extends State<MyDrawer> {
                     visualDensity: VisualDensity(vertical: -4),
                     title: Text(
                       "Chat with Astrologers",
-                      style: TextStyle(fontFamily: "primary"),
+                      style: myTextStyle15(),
                     ),
                     leading: Icon(Icons.chat_bubble_outline_rounded),
                   ),
 
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
-                    title: Text(
-                      "AstroRemedy",
-                      style: TextStyle(fontFamily: "primary"),
-                    ),
+                    title: Text("AstroRemedy", style: myTextStyle15()),
                     leading: Icon(Icons.store_rounded),
                   ),
 
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
-                    title: Text(
-                      "My Following",
-                      style: TextStyle(fontFamily: "primary"),
-                    ),
+                    title: Text("My Following", style: myTextStyle15()),
                     leading: Icon(Icons.person_search_rounded),
                   ),
 
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
-                    title: Text(
-                      "Free Service",
-                      style: TextStyle(fontFamily: "primary"),
-                    ),
+                    title: Text("Free Service", style: myTextStyle15()),
                     leading: Icon(Icons.local_offer_outlined),
                   ),
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
-                    title: Text(
-                      "Setting",
-                      style: TextStyle(fontFamily: "primary"),
-                    ),
+                    title: Text("Setting", style: myTextStyle15()),
                     leading: Icon(Icons.settings),
                   ),
                 ],
@@ -245,7 +212,7 @@ class _MyDrawerState extends State<MyDrawer> {
             /// version
             Text(
               "Version 1.1.359",
-              style: myTextStyle18(
+              style: myTextStyle15(
                 textColor: Colors.green,
                 fontWeight: FontWeight.bold,
               ),

@@ -47,8 +47,8 @@ class _AstroChatCardState extends State<AstroChatCard> {
                 child: Column(
                   children: [
                     Container(
-                      height: mqData.height * 0.12,
-                      width: mqData.height * 0.12,
+                      height: mqData.height * 0.1,
+                      width: mqData.height * 0.1,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
@@ -65,17 +65,17 @@ class _AstroChatCardState extends State<AstroChatCard> {
                     /// rating star
                     Row(
                       children: [
-                        Icon(Icons.star, color: Colors.black45, size: 21),
-                        Icon(Icons.star, color: Colors.black45, size: 21),
-                        Icon(Icons.star, color: Colors.black45, size: 21),
-                        Icon(Icons.star, color: Colors.black45, size: 21),
-                        Icon(Icons.star, color: Colors.black45, size: 21),
+                        Icon(Icons.star, color: Colors.black45, size: 15),
+                        Icon(Icons.star, color: Colors.black45, size: 15),
+                        Icon(Icons.star, color: Colors.black45, size: 15),
+                        Icon(Icons.star, color: Colors.black45, size: 15),
+                        Icon(Icons.star, color: Colors.black45, size: 15),
                       ],
                     ),
 
                     Text(
                       "${widget.orders} orders",
-                      style: myTextStyle15(textColor: Colors.black45),
+                      style: myTextStyle12(textColor: Colors.black45),
                     ),
                   ],
                 ),
@@ -95,41 +95,42 @@ class _AstroChatCardState extends State<AstroChatCard> {
                             /// name
                             Text(
                               widget.name,
-                              style: myTextStyle21(fontWeight: FontWeight.bold),
+                              style: myTextStyle18(fontWeight: FontWeight.bold),
                             ),
 
                             /// verify icon
                             Icon(
                               Icons.verified_rounded,
-                              color: Colors.green,
-                              size: 32,
+                              color: Colors.greenAccent,
+                              size: 21,
                             ),
                           ],
                         ),
                         Text(
                           "Tarot,Life Coach",
-                          style: myTextStyle18(textColor: Colors.black45),
+                          style: myTextStyle12(textColor: Colors.black45),
                         ),
 
                         /// language
                         Text(
                           widget.language,
-                          style: myTextStyle18(textColor: Colors.black45),
+                          style: myTextStyle12(textColor: Colors.black45),
                         ),
                         Text(
                           "Exp- 3 Years",
-                          style: myTextStyle18(textColor: Colors.black45),
+                          style: myTextStyle12(textColor: Colors.black45),
                         ),
                         Row(
                           children: [
                             Icon(
                               Icons.currency_rupee_rounded,
                               color: Colors.black38,
+                              size: 18,
                             ),
                             Text(
                               widget.oldPrice,
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 12,
                                 color: Colors.black45,
                                 fontFamily: "primary",
                                 decorationColor: Colors.black45,
@@ -142,10 +143,11 @@ class _AstroChatCardState extends State<AstroChatCard> {
                                 Icon(
                                   Icons.currency_rupee_rounded,
                                   color: Colors.red,
+                                  size: 12,
                                 ),
                                 Text(
                                   widget.newPrice,
-                                  style: myTextStyle18(
+                                  style: myTextStyle12(
                                     textColor: Colors.red,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -162,6 +164,7 @@ class _AstroChatCardState extends State<AstroChatCard> {
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
+                          elevation: 0,
                           backgroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
@@ -169,10 +172,10 @@ class _AstroChatCardState extends State<AstroChatCard> {
                           side: BorderSide(width: 1, color: Colors.green),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 1.0),
                           child: Text(
                             "Chat",
-                            style: myTextStyle18(
+                            style: myTextStyle15(
                               fontWeight: FontWeight.bold,
                               textColor: Colors.green,
                             ),

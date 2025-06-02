@@ -230,11 +230,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Text(
                             "Live Astrologers",
-                            style: myTextStyle18(fontWeight: FontWeight.bold),
+                            style: myTextStyle15(fontWeight: FontWeight.bold),
                           ),
                           Text(
                             "View All",
-                            style: myTextStyle18(textColor: Colors.black45),
+                            style: myTextStyle12(textColor: Colors.black45),
                           ),
                         ],
                       ),
@@ -278,11 +278,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Text(
                             "Astrologers",
-                            style: myTextStyle18(fontWeight: FontWeight.bold),
+                            style: myTextStyle15(fontWeight: FontWeight.bold),
                           ),
                           Text(
                             "View All",
-                            style: myTextStyle18(textColor: Colors.black45),
+                            style: myTextStyle12(textColor: Colors.black45),
                           ),
                         ],
                       ),
@@ -321,11 +321,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Text(
                             "AstroRemedy",
-                            style: myTextStyle18(fontWeight: FontWeight.bold),
+                            style: myTextStyle15(fontWeight: FontWeight.bold),
                           ),
                           Text(
                             "View All",
-                            style: myTextStyle18(textColor: Colors.black45),
+                            style: myTextStyle12(textColor: Colors.black45),
                           ),
                         ],
                       ),
@@ -362,11 +362,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Text(
                             "Latest from blog",
-                            style: myTextStyle18(fontWeight: FontWeight.bold),
+                            style: myTextStyle15(fontWeight: FontWeight.bold),
                           ),
                           Text(
                             "View All",
-                            style: myTextStyle18(textColor: Colors.black45),
+                            style: myTextStyle12(textColor: Colors.black45),
                           ),
                         ],
                       ),
@@ -376,7 +376,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
                       child: SizedBox(
-                        height: mqData.height * 0.28,
+                        height: mqData.height * 0.26,
                         child: ListView.builder(
                           itemCount: latestBlog.length,
                           scrollDirection: Axis.horizontal,
@@ -406,14 +406,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                color: Colors.black12,
+                                color: Colors.black12.withAlpha(30),
                                 shape: BoxShape.circle,
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(12.0),
                                 child: Icon(
                                   Icons.lock,
-                                  size: mqData.height * 0.07,
+                                  color: Colors.black87,
+                                  size: mqData.height * 0.05,
                                 ),
                               ),
                             ),
@@ -421,11 +422,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(height: 21),
                             Text(
                               "Private & ",
-                              style: myTextStyle18(fontWeight: FontWeight.bold),
+                              style: myTextStyle15(fontWeight: FontWeight.bold),
                             ),
                             Text(
                               "Confidential",
-                              style: myTextStyle18(fontWeight: FontWeight.bold),
+                              style: myTextStyle15(fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -435,14 +436,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                color: Colors.black12,
+                                color: Colors.black12.withAlpha(30),
                                 shape: BoxShape.circle,
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(12.0),
                                 child: Icon(
                                   Icons.verified_user,
-                                  size: mqData.height * 0.07,
+                                  color: Colors.black87,
+                                  size: mqData.height * 0.05,
                                 ),
                               ),
                             ),
@@ -450,11 +452,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(height: 21),
                             Text(
                               "Verified",
-                              style: myTextStyle18(fontWeight: FontWeight.bold),
+                              style: myTextStyle15(fontWeight: FontWeight.bold),
                             ),
                             Text(
                               "Astrologers",
-                              style: myTextStyle18(fontWeight: FontWeight.bold),
+                              style: myTextStyle15(fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -464,14 +466,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                color: Colors.black12,
+                                color: Colors.black12.withAlpha(30),
                                 shape: BoxShape.circle,
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(12.0),
                                 child: Icon(
                                   Icons.security_rounded,
-                                  size: mqData.height * 0.07,
+                                  color: Colors.black87,
+                                  size: mqData.height * 0.05,
                                 ),
                               ),
                             ),
@@ -479,11 +482,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(height: 21),
                             Text(
                               "Secure",
-                              style: myTextStyle18(fontWeight: FontWeight.bold),
+                              style: myTextStyle15(fontWeight: FontWeight.bold),
                             ),
                             Text(
                               "Payments",
-                              style: myTextStyle18(fontWeight: FontWeight.bold),
+                              style: myTextStyle15(fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -502,7 +505,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 left: 0,
                 right: 0,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(4.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -511,11 +514,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.primary,
-                          elevation: 5,
+                          elevation: 3,
                         ),
                         child: Row(
                           children: [
-                            Icon(Icons.chat, color: Colors.black),
+                            Icon(Icons.chat, color: Colors.black, size: 14),
                             SizedBox(width: 2),
                             Text(
                               "Chart with Astrologer",
@@ -531,11 +534,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.primary,
-                          elevation: 5,
+                          elevation: 3,
                         ),
                         child: Row(
                           children: [
-                            Icon(Icons.call, color: Colors.black),
+                            Icon(Icons.call, color: Colors.black, size: 14),
                             SizedBox(width: 2),
                             Text(
                               "Call with Astrologer",
@@ -558,8 +561,10 @@ class _HomeScreenState extends State<HomeScreen> {
   /// app bar build
   Widget _buildAppBar() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      padding: const EdgeInsets.symmetric(horizontal: 12.0 , vertical: 6),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           /// profile image
           GestureDetector(
@@ -571,8 +576,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Image.asset(
                     "lib/assets/images/profile.png",
                     fit: BoxFit.cover,
-                    height: mqData.height * 0.05,
-                    width: mqData.height * 0.05,
+                    height: mqData.height * 0.04,
+                    width: mqData.height * 0.04,
                   ),
                 ),
                 Positioned(
@@ -590,7 +595,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           SizedBox(width: 12),
-          Text("Hi Rahul", style: myTextStyle21()),
+          Text("Hi Rahul", style: myTextStyle15()),
 
           Expanded(child: SizedBox(width: mqData.width)),
 
@@ -603,10 +608,10 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2),
               child: Row(
                 children: [
-                  Icon(Icons.account_balance_wallet_outlined),
-                  Icon(Icons.currency_rupee_rounded),
-                  Text("0", style: myTextStyle21()),
-                  Icon(Icons.add_circle_rounded),
+                  Icon(Icons.account_balance_wallet_outlined, size: 15),
+                  Icon(Icons.currency_rupee_rounded, size: 15),
+                  Text("0", style: myTextStyle15()),
+                  Icon(Icons.add_circle_rounded, size: 15),
                 ],
               ),
             ),
@@ -615,20 +620,22 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(width: 12),
 
           /// language
-          Icon(Icons.g_translate_rounded),
+          Icon(Icons.g_translate_rounded, size: mqData.height * 0.03),
 
           SizedBox(width: 12),
 
           Container(
+            height: mqData.height * 0.04,
+            width: mqData.height * 0.04,
             decoration: BoxDecoration(
               color: AppColors.lightBackground,
               shape: BoxShape.circle,
-            ),
-            child: Image.asset(
-              "lib/assets/images/customer-service-agent.png",
-              fit: BoxFit.cover,
-              height: mqData.height * 0.05,
-              width: mqData.height * 0.05,
+              image: DecorationImage(
+                image: AssetImage(
+                  "lib/assets/images/customer-service-agent.png",
+                ),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ],
@@ -657,8 +664,8 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Image.asset(imagePath),
           ),
         ),
-        Text(title, style: myTextStyle18(textColor: Colors.black45)),
-        Text(subtitle, style: myTextStyle18(textColor: Colors.black45)),
+        Text(title, style: myTextStyle15(textColor: Colors.black45)),
+        Text(subtitle, style: myTextStyle15(textColor: Colors.black45)),
       ],
     );
   }
@@ -667,6 +674,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Padding(
       padding: const EdgeInsets.only(right: 8.0),
       child: Stack(
+        alignment: Alignment.bottomCenter,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
@@ -677,18 +685,14 @@ class _HomeScreenState extends State<HomeScreen> {
               fit: BoxFit.cover,
             ),
           ),
-          Positioned(
-            bottom: 10,
-            left: mqData.width * 0.05,
-            child: Text(
-              name,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                fontFamily: "primary",
-                color: Colors.white,
-                shadows: [BoxShadow(blurRadius: 5, spreadRadius: 4)],
-              ),
+          Text(
+            name,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              fontFamily: "primary",
+              color: Colors.white,
+              shadows: [BoxShadow(blurRadius: 5, spreadRadius: 4)],
             ),
           ),
         ],
@@ -702,7 +706,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Stack(
         children: [
           Container(
-            height: mqData.height * 0.13,
+            height: mqData.height * 0.14,
             width: mqData.width,
             decoration: BoxDecoration(
               color: Colors.black,
@@ -720,7 +724,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         Text(
                           "Got any questions?",
-                          style: myTextStyle24(
+                          style: myTextStyle21(
                             textColor: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
@@ -728,15 +732,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         Text(
                           "chat with Astrologer",
-                          style: myTextStyle18(textColor: Colors.white),
+                          style: myTextStyle15(textColor: Colors.white),
                         ),
 
+                        SizedBox(height: mqData.height * 0.01),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               "@INR 5/min",
-                              style: myTextStyle21(
+                              style: myTextStyle15(
                                 textColor: Colors.white,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -785,7 +790,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.all(4.0),
                 child: Text(
                   "NEW",
-                  style: myTextStyle15(textColor: Colors.white),
+                  style: myTextStyle12(textColor: Colors.white),
                 ),
               ),
             ),
@@ -803,77 +808,78 @@ class _HomeScreenState extends State<HomeScreen> {
   }) {
     return Stack(
       children: [
-        Container(
-          width: mqData.width * 0.35,
-          margin: EdgeInsets.only(right: 12),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(width: 2, color: Colors.black38),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(height: 26),
+        SizedBox(
+          width: mqData.width * 0.4,
+          child: Card(
+            color: Colors.white,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(height: 21),
 
-              /// profile
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: mqData.width * 0.03),
-                height: mqData.height * 0.12,
-                width: mqData.height * 0.12,
-                decoration: BoxDecoration(
-                  color: AppColors.lightBackground,
-                  shape: BoxShape.circle,
-                  border: Border.all(width: 2, color: AppColors.primary),
-                  image: DecorationImage(
-                    image: AssetImage(imagePath),
-                    fit: BoxFit.cover,
+                /// profile
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: mqData.width * 0.03),
+                  height: mqData.height * 0.12,
+                  width: mqData.height * 0.12,
+                  decoration: BoxDecoration(
+                    color: AppColors.lightBackground,
+                    shape: BoxShape.circle,
+                    border: Border.all(width: 2, color: AppColors.primary),
+                    image: DecorationImage(
+                      image: AssetImage(imagePath),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: 4),
+                SizedBox(height: 4),
 
-              /// name
-              Text(
-                name,
-                style: myTextStyle18(
-                  textColor: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.currency_rupee_rounded,
-                    size: 16,
-                    color: Colors.black38,
+                /// name
+                Text(
+                  name,
+                  style: myTextStyle18(
+                    textColor: Colors.black,
+                    fontWeight: FontWeight.bold,
                   ),
-                  Text(call, style: myTextStyle18(textColor: Colors.black45)),
-                ],
-              ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.currency_rupee_rounded,
+                      size: 16,
+                      color: Colors.black38,
+                    ),
+                    Text(call, style: myTextStyle12(textColor: Colors.black45)),
+                  ],
+                ),
 
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(21),
-                  border: Border.all(width: 2, color: Colors.green),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: mqData.height * 0.04,
-                    vertical: 2,
+                Container(
+                  margin: EdgeInsets.only(top: 8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(21),
+                    border: Border.all(width: 1, color: Colors.green),
                   ),
-                  child: Text(
-                    "Chat",
-                    style: myTextStyle18(textColor: Colors.green),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: mqData.height * 0.03,
+                      vertical: 4,
+                    ),
+                    child: Text(
+                      "Chat",
+                      style: myTextStyle12(textColor: Colors.green),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         Positioned(
+          top: 5,
+          left: 3,
           child: Container(
             decoration: BoxDecoration(
               color: Colors.black87.withAlpha(170),
@@ -916,7 +922,7 @@ class _HomeScreenState extends State<HomeScreen> {
               name,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 18,
+                fontSize: 15,
                 fontFamily: "primary",
                 color: Colors.white,
                 shadows: [
@@ -954,7 +960,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Container(
                   width: mqData.width,
-                  height: mqData.height * 0.15,
+                  height: mqData.height * 0.14,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(12),
@@ -982,10 +988,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       child: Row(
                         children: [
-                          Icon(Icons.visibility),
+                          Icon(Icons.visibility, size: 15),
                           Text(
                             view,
-                            style: myTextStyle15(textColor: Colors.black),
+                            style: myTextStyle12(textColor: Colors.black),
                           ),
                         ],
                       ),
@@ -1015,7 +1021,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Text(
                       title,
-                      style: myTextStyle21(
+                      style: myTextStyle15(
                         fontWeight: FontWeight.bold,
                         textColor: Colors.white,
                       ),
@@ -1037,12 +1043,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Text(
                     title,
-                    style: myTextStyle18(fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "Meaning:Love,Career&Twin",
                     style: myTextStyle15(fontWeight: FontWeight.bold),
                   ),
+                  Text("Meaning:Love,Career&Twin", style: myTextStyle15()),
 
                   SizedBox(height: 12),
 
@@ -1051,11 +1054,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Text(
                         "Nabangi",
-                        style: myTextStyle15(textColor: Colors.black38),
+                        style: myTextStyle12(textColor: Colors.black38),
                       ),
                       Text(
                         date,
-                        style: myTextStyle15(textColor: Colors.black38),
+                        style: myTextStyle12(textColor: Colors.black38),
                       ),
                     ],
                   ),

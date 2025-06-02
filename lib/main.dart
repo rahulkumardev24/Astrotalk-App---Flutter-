@@ -1,5 +1,7 @@
 import 'package:astrotalk_app/screen/dashboard/dashboard_screen.dart';
 import 'package:astrotalk_app/screen/dashboard/live_screen.dart';
+import 'package:astrotalk_app/screen/starting/splash_screen.dart';
+import 'package:astrotalk_app/screen/starting/start_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,11 +15,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Astrotalk',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: DashboardScreen(),
+      home: SplashScreen(),
     );
   }
 }

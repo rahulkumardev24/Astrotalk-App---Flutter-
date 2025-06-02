@@ -276,8 +276,10 @@ class _ChatScreenState extends State<ChatScreen> {
   /// app bar build
   Widget _buildAppBar() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      padding: const EdgeInsets.symmetric(horizontal: 12.0 , vertical: 6),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           /// profile image
           GestureDetector(
@@ -308,13 +310,13 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ),
           SizedBox(width: 12),
-          Text("Hi Rahul", style: myTextStyle21()),
+          Text("Hi Rahul", style: myTextStyle15()),
 
           Expanded(child: SizedBox(width: mqData.width)),
 
           Container(
-            height: mqData.height * 0.075,
-            width: mqData.width * 0.3,
+            height: mqData.height * 0.065,
+            width: mqData.width * 0.25,
             decoration: BoxDecoration(
               color: Colors.green,
               borderRadius: BorderRadius.only(
@@ -327,24 +329,20 @@ class _ChatScreenState extends State<ChatScreen> {
             child: Column(
               children: [
                 Container(
-                  width: mqData.width,
                   decoration: BoxDecoration(
-                    color: Colors.white,
                     borderRadius: BorderRadius.circular(27),
-                    border: Border.all(width: 1, color: Colors.black),
+                    border: Border.all(width: 1, color: Colors.black38),
+                    color: Colors.white
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0,
-                      vertical: 2,
-                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.account_balance_wallet_outlined),
-                        Icon(Icons.currency_rupee_rounded),
-                        Text("0", style: myTextStyle21()),
-                        Icon(Icons.add_circle_rounded),
+                        Icon(Icons.account_balance_wallet_outlined, size: 15),
+                        Icon(Icons.currency_rupee_rounded, size: 15),
+                        Text("0", style: myTextStyle15()),
+                        Icon(Icons.add_circle_rounded, size: 15),
                       ],
                     ),
                   ),
@@ -353,9 +351,10 @@ class _ChatScreenState extends State<ChatScreen> {
                   padding: const EdgeInsets.all(4),
                   child: Text(
                     "100% Cashback",
-                    style: myTextStyle12(
-                      textColor: Colors.white,
-                      fontWeight: FontWeight.w700,
+                    style: TextStyle(
+                      fontFamily: "primary" ,
+                      color: Colors.white ,
+                      fontSize: 9
                     ),
                   ),
                 ),

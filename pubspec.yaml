@@ -83,7 +83,7 @@ flutter:
   fonts:
      - family: primary
        fonts:
-         - asset: lib/assets/fonts/Roboto-Regular.ttf
+         - asset: lib/assets/fonts/Poppins-Regular.ttf
      - family: secondary
        fonts:
          - asset: lib/assets/fonts/LibreBaskerville-Regular.ttf

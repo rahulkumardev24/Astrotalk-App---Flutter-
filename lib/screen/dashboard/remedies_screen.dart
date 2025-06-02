@@ -1,3 +1,4 @@
+import 'package:astrotalk_app/widgets/my_drawer.dart';
 import 'package:flutter/material.dart';
 
 import '../../helper/color.dart';
@@ -143,6 +144,8 @@ class _RemediesScreenState extends State<RemediesScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
+
         /// app bar
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -150,6 +153,7 @@ class _RemediesScreenState extends State<RemediesScreen> {
           backgroundColor: Colors.white,
         ),
         backgroundColor: Colors.white,
+        drawer: MyDrawer(),
 
         /// -------------------- body ---------------------------- ///
         body: SafeArea(
@@ -413,8 +417,8 @@ class _RemediesScreenState extends State<RemediesScreen> {
                   child: Image.asset(
                     "lib/assets/images/profile.png",
                     fit: BoxFit.cover,
-                    height: mqData.height * 0.05,
-                    width: mqData.height * 0.05,
+                    height: mqData.height * 0.04,
+                    width: mqData.height * 0.04,
                   ),
                 ),
                 Positioned(
@@ -432,7 +436,7 @@ class _RemediesScreenState extends State<RemediesScreen> {
             ),
           ),
           SizedBox(width: 12),
-          Text("Hi Rahul", style: myTextStyle21()),
+          Text("AstroRemedy", style: myTextStyle15()),
 
           Expanded(child: SizedBox(width: mqData.width)),
 
@@ -445,9 +449,9 @@ class _RemediesScreenState extends State<RemediesScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
               child: Row(
                 children: [
-                  Icon(Icons.restore_outlined),
+                  Icon(Icons.restore_outlined, size: 15),
                   SizedBox(width: 4),
-                  Text("Orders", style: myTextStyle15()),
+                  Text("Orders", style: myTextStyle12()),
                 ],
               ),
             ),
@@ -491,7 +495,7 @@ class _RemediesScreenState extends State<RemediesScreen> {
               name,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 18,
+                fontSize: 15,
                 fontFamily: "primary",
                 color: Colors.white,
                 shadows: [

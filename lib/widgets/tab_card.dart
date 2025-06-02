@@ -31,7 +31,7 @@ class TabCard extends StatelessWidget {
             children: [
               Icon(icon, color: iconColor),
               SizedBox(width: 6),
-              Text(title, style: myTextStyle18()),
+              Text(title, style: myTextStyle15()),
             ],
           ),
         ),

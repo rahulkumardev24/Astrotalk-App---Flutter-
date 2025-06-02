@@ -14,7 +14,7 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  List<Widget> _screen = [
+  final List<Widget> _screen = [
     HomeScreen(),
     ChatScreen(),
     LiveScreen(),
@@ -32,8 +32,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
         currentIndex: selectedScreen,
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.black38,
-        unselectedLabelStyle: myTextStyle15(),
-        selectedLabelStyle: myTextStyle15(),
+        unselectedLabelStyle: myTextStyle12(),
+        selectedLabelStyle: myTextStyle12(),
         backgroundColor: Colors.white,
         showSelectedLabels: true,
         showUnselectedLabels: true,

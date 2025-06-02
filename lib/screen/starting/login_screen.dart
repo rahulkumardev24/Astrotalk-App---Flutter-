@@ -51,7 +51,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Container(color: AppColors.primary),
                     ),
                     Positioned(
-                      left: mqData.width * 0.1,
+                      left: mqData.width * 0.05,
+                      right: mqData.width * 0.05,
                       child: Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -65,6 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           child: Text(
                             "First Chat with Astrologer if FREE!",
+                            textAlign: TextAlign.center,
                             style: myTextStyle18(),
                           ),
                         ),
@@ -87,12 +89,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               children: [
                                 Image.asset(
                                   "lib/assets/images/flag.png",
-                                  height: mqData.height * 0.04,
+                                  height: mqData.height * 0.035,
                                 ),
                                 SizedBox(width: 12),
                                 Text(
                                   "IN +91  ",
-                                  style: myTextStyle24(
+                                  style: myTextStyle21(
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -104,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     decoration: InputDecoration(
                                       border: InputBorder.none,
                                       hintText: 'phone number',
-                                      hintStyle: myTextStyle24(
+                                      hintStyle: myTextStyle21(
                                         fontWeight: FontWeight.bold,
                                         textColor: Colors.black54,
                                       ),
@@ -158,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                           Text(
                             "By signing up , you agree to our Terms of Use and ",
-                            style: myTextStyle15(textColor: Colors.black54),
+                            style: myTextStyle12(textColor: Colors.black54),
                           ),
                           Text(
                             "Privacy Policy",
@@ -282,7 +284,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ),
                                 Text(
-                                  "Top astrologers of India",
+                                  "Top astrologers",
+                                  style: myTextStyle12(),
+                                ),
+                                Text(
+                                  "of India",
                                   style: myTextStyle12(),
                                 ),
                               ],
@@ -306,7 +312,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                Text("Happy customers", style: myTextStyle12()),
+                                Text("Happy", style: myTextStyle12()),
+                                Text("customers", style: myTextStyle12()),
                               ],
                             ),
                           ],
