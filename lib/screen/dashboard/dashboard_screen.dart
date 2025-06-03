@@ -14,18 +14,28 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  final List<Widget> _screen = [
-    HomeScreen(),
-    ChatScreen(),
-    LiveScreen(),
-    CallScreen(),
-    RemediesScreen(),
-  ];
+
 
   int selectedScreen = 0;
 
+
+  void changeTab(int index) {
+    setState(() {
+      selectedScreen = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    final List<Widget> _screen = [
+      HomeScreen(onTabChange: changeTab,),
+      ChatScreen(),
+      LiveScreen(),
+      CallScreen(),
+      RemediesScreen(),
+    ];
+
     return Scaffold(
       body: _screen[selectedScreen],
       bottomNavigationBar: BottomNavigationBar(

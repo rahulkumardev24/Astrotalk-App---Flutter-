@@ -10,7 +10,8 @@ import '../common/add_money_screen.dart';
 import '../common/help_and_support_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final Function(int index) onTabChange;
+  const HomeScreen({super.key, required this.onTabChange});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -246,9 +247,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             "Live Astrologers",
                             style: myTextStyle15(fontWeight: FontWeight.bold),
                           ),
-                          Text(
-                            "View All",
-                            style: myTextStyle12(textColor: Colors.black45),
+                          InkWell(
+                            onTap: (){
+                              widget.onTabChange(2);
+                            },
+                            child: Text(
+                              "View All",
+                              style: myTextStyle12(textColor: Colors.black45),
+                            ),
                           ),
                         ],
                       ),
@@ -337,9 +343,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             "AstroRemedy",
                             style: myTextStyle15(fontWeight: FontWeight.bold),
                           ),
-                          Text(
-                            "View All",
-                            style: myTextStyle12(textColor: Colors.black45),
+                          InkWell(
+                            onTap: (){
+                              widget.onTabChange(4);
+                            },
+                            child: Text(
+                              "View All",
+                              style: myTextStyle12(textColor: Colors.black45),
+                            ),
                           ),
                         ],
                       ),
@@ -525,7 +536,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       /// Chart with Astrologer
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          widget.onTabChange(1);
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.primary,
                           elevation: 3,
@@ -544,7 +557,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
                       /// Call with Astrologer
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          widget.onTabChange(3);
+                        },
 
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.primary,

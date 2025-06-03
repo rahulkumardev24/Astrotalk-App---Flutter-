@@ -1,10 +1,14 @@
-import 'package:astrotalk_app/screen/dashboard/dashboard_screen.dart';
-import 'package:astrotalk_app/screen/dashboard/live_screen.dart';
 import 'package:astrotalk_app/screen/starting/splash_screen.dart';
-import 'package:astrotalk_app/screen/starting/start_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  /// use for stop device orientation
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(const MyApp());
 }
 
@@ -19,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: DashboardScreen(),
+      home: SplashScreen(),
     );
   }
 }

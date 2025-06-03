@@ -78,12 +78,14 @@ class _MyDrawerState extends State<MyDrawer> {
                     visualDensity: VisualDensity(vertical: -4),
                     title: Text("Home", style: myTextStyle15()),
                     leading: Icon(Icons.home_filled),
+                    onTap: () => Navigator.pop(context),
                   ),
 
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
                     title: Text("Book a Pooja", style: myTextStyle15()),
                     leading: Icon(Icons.grass_outlined),
+                    onTap: () => Navigator.pop(context),
                   ),
 
                   ListTile(
@@ -93,36 +95,42 @@ class _MyDrawerState extends State<MyDrawer> {
                       style: myTextStyle15(),
                     ),
                     leading: Icon(Icons.support_agent_rounded),
+                    onTap: () => Navigator.pop(context),
                   ),
 
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
                     title: Text("Wallet Transactions", style: myTextStyle15()),
                     leading: Icon(Icons.account_balance_wallet_outlined),
+                    onTap: () => Navigator.pop(context),
                   ),
 
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
                     title: Text("Redeem Gift Card", style: myTextStyle15()),
                     leading: Icon(Icons.card_giftcard_rounded),
+                    onTap: () => Navigator.pop(context),
                   ),
 
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
                     title: Text("Order History", style: myTextStyle15()),
                     leading: Icon(Icons.history),
+                    onTap: () => Navigator.pop(context),
                   ),
 
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
                     title: Text("AstroRemedy", style: myTextStyle15()),
                     leading: Icon(Icons.store_rounded),
+                    onTap: () => Navigator.pop(context),
                   ),
 
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
                     title: Text("Astrology Blog", style: myTextStyle15()),
                     leading: Icon(Icons.book),
+                    onTap: () => Navigator.pop(context),
                   ),
 
                   ListTile(
@@ -132,29 +140,34 @@ class _MyDrawerState extends State<MyDrawer> {
                       style: myTextStyle15(),
                     ),
                     leading: Icon(Icons.chat_bubble_outline_rounded),
+                    onTap: () => Navigator.pop(context),
                   ),
 
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
                     title: Text("AstroRemedy", style: myTextStyle15()),
                     leading: Icon(Icons.store_rounded),
+                    onTap: () => Navigator.pop(context),
                   ),
 
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
                     title: Text("My Following", style: myTextStyle15()),
                     leading: Icon(Icons.person_search_rounded),
+                    onTap: () => Navigator.pop(context),
                   ),
 
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
                     title: Text("Free Service", style: myTextStyle15()),
                     leading: Icon(Icons.local_offer_outlined),
+                    onTap: () => Navigator.pop(context),
                   ),
                   ListTile(
                     visualDensity: VisualDensity(vertical: -4),
                     title: Text("Setting", style: myTextStyle15()),
                     leading: Icon(Icons.settings),
+                    onTap: () => Navigator.pop(context),
                   ),
                 ],
               ),
