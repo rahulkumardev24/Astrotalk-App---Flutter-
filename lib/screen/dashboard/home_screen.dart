@@ -248,7 +248,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             style: myTextStyle15(fontWeight: FontWeight.bold),
                           ),
                           InkWell(
-                            onTap: (){
+                            onTap: () {
                               widget.onTabChange(2);
                             },
                             child: Text(
@@ -344,7 +344,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             style: myTextStyle15(fontWeight: FontWeight.bold),
                           ),
                           InkWell(
-                            onTap: (){
+                            onTap: () {
                               widget.onTabChange(4);
                             },
                             child: Text(
